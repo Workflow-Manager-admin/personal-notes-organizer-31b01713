@@ -14,9 +14,10 @@ const router = express.Router();
  */
 router.post('/chat', async (req, res) => {
   try {
-    const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+    // Use OPENAI_API_KEY from env (never expose REACT_APP_ keys in backend)
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
     if (!OPENAI_API_KEY) {
-      return res.status(500).json({ error: 'OpenAI API key not configured' });
+      return res.status(500).json({ error: 'OpenAI API key not configured in backend (set OPENAI_API_KEY env var)' });
     }
     const { messages, model = "gpt-3.5-turbo" } = req.body;
     const response = await fetch('https://api.openai.com/v1/chat/completions', {

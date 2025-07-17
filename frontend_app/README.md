@@ -33,8 +33,14 @@ The React frontend uses this proxy so the OpenAI API key is never exposed to use
 Add your OpenAI API key in `.env`:
 
 ```
-REACT_APP_OPENAI_API_KEY=sk-...
+# For backend proxy (Express): must set this!
+OPENAI_API_KEY=sk-...
+
+# (Optional) For frontend build: 
+# REACT_APP_OPENAI_API_KEY=sk-... (not required for local proxy usage)
 ```
+
+Restart backend (`npm run backend`) after adding/changing `.env`.
 
 ### AI Assistant Widget
 
