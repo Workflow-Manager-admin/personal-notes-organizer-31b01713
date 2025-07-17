@@ -5,13 +5,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "express": "^4.18.2",
-    "node-fetch": "^2.6.7"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "backend": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
