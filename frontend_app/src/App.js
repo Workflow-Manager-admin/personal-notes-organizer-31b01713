@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import NotesList from './components/NotesList';
 import NoteEditor from './components/NoteEditor';
-
+import AIAssistant from './components/AIAssistant'; // AI Assistant import
 /**
  * In-memory notes/data structure used in browser state.
  * Each note: { id, title, text, tags (array<string>), updatedAt }
@@ -121,45 +121,48 @@ function App() {
   }, []);
 
   return (
-    <div className="App" style={{display: "flex", flexDirection: "row", minHeight: "100vh"}}>
-      <Sidebar
-        tags={tagsSet}
-        selectedTag={selectedTag}
-        onSelectTag={setSelectedTag}
-        onAddTag={handleAddTag}
-      />
-      <div style={{flex: 1, display: "flex", flexDirection: "column", minHeight: "100vh"}}>
-        <TopBar
-          search={search}
-          onSearchChange={setSearch}
-          onNewNote={handleNewNote}
-          theme={theme}
-          onToggleTheme={toggleTheme}
+    <>
+      <div className="App" style={{display: "flex", flexDirection: "row", minHeight: "100vh"}}>
+        <Sidebar
+          tags={tagsSet}
+          selectedTag={selectedTag}
+          onSelectTag={setSelectedTag}
+          onAddTag={handleAddTag}
         />
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "row",
-            minHeight: 0,
-            background: "var(--bg-primary)"
-          }}
-        >
-          <NotesList
-            notes={filteredNotes}
-            selectedNoteId={selectedNoteId}
-            onSelectNote={setSelectedNoteId}
-            onDeleteNote={handleDeleteNote}
+        <div style={{flex: 1, display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+          <TopBar
+            search={search}
+            onSearchChange={setSearch}
+            onNewNote={handleNewNote}
+            theme={theme}
+            onToggleTheme={toggleTheme}
           />
-          <div style={{flex: 2, minWidth: 0}}>
-            <NoteEditor
-              note={selectedNote}
-              onUpdate={handleUpdateNote}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "row",
+              minHeight: 0,
+              background: "var(--bg-primary)"
+            }}
+          >
+            <NotesList
+              notes={filteredNotes}
+              selectedNoteId={selectedNoteId}
+              onSelectNote={setSelectedNoteId}
+              onDeleteNote={handleDeleteNote}
             />
+            <div style={{flex: 2, minWidth: 0}}>
+              <NoteEditor
+                note={selectedNote}
+                onUpdate={handleUpdateNote}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <AIAssistant />
+    </>
   );
 }
 

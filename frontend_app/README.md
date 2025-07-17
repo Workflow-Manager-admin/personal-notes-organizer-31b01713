@@ -14,10 +14,39 @@ This project provides a minimal React template with a clean, modern UI and minim
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs dependencies.
+
 ### `npm start`
 
 Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `npm run backend`
+
+Runs the local Express backend on port 5001 for OpenAI API proxying.\
+The React frontend uses this proxy so the OpenAI API key is never exposed to users.
+
+**You must run both the React app and the backend Express server for the AI Assistant to work in local development.**
+
+Add your OpenAI API key in `.env`:
+
+```
+# For backend proxy (Express): must set this!
+OPENAI_API_KEY=sk-...
+
+# (Optional) For frontend build: 
+# REACT_APP_OPENAI_API_KEY=sk-... (not required for local proxy usage)
+```
+
+Restart backend (`npm run backend`) after adding/changing `.env`.
+
+### AI Assistant Widget
+
+- The chat widget (bottom right 🤖 button) is always available in the UI.
+- Message the assistant for help, summaries, brainstorming, or note suggestions.
+- Your API key is kept secret by proxying requests through the backend (`/api/openai/chat`).
 
 ### `npm test`
 
